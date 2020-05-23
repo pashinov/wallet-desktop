@@ -15,21 +15,15 @@ namespace Wallet {
 Ton::Settings GetDefaultSettings() {
 	auto result = Ton::Settings();
 
-	auto test = QFile(":/config/test-default.json");
-	test.open(QIODevice::ReadOnly);
-	result.test.config = test.readAll();
-	result.test.blockchainName = "testnet2";
-	result.test.configUrl = "https://ton.org/config-test.json";
-
-	//auto main = QFile(":/config/default.json"); // #TODO postponed
-	//main.open(QIODevice::ReadOnly);
-	//result.main.config = main.readAll();
-	//result.main.blockchainName = "mainnet";
-	//result.main.configUrl = "https://ton.org/config.json";
+	auto main = QFile(":/config/default.json");
+	main.open(QIODevice::ReadOnly);
+	result.main.config = main.readAll();
+	result.main.blockchainName = "mainnet";
+	result.main.configUrl = "https://bytie.moe/free.ton"; // TODO: host
 
 	result.useNetworkCallbacks = false;
-	result.useTestNetwork = true; // #TODO postponed
-	result.version = 2;
+	result.useTestNetwork = false;
+	result.version = 0;
 	return result;
 }
 
