@@ -17,7 +17,7 @@ desktop_app_parse_version(Wallet/build/version)
 project(Wallet
     LANGUAGES C CXX
     VERSION ${desktop_app_version_cmake}
-    DESCRIPTION "Test Gram Wallet"
+    DESCRIPTION "TON Crystal Wallet"
     HOMEPAGE_URL "https://wallet.ton.org"
 )
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Wallet)

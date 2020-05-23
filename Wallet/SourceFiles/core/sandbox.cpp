@@ -165,7 +165,7 @@ bool Sandbox::event(QEvent *event) {
 		const auto e = static_cast<QFileOpenEvent*>(event);
 		const auto url = e->url().toEncoded().trimmed();
 		const auto string = QString::fromUtf8(url);
-		if (string.startsWith("ton://", Qt::CaseInsensitive)) {
+		if (string.startsWith("freeton://", Qt::CaseInsensitive)) {
 			_launchCommand = "OPEN:" + url.mid(0, 8192);
 			handleLaunchCommand();
 		}

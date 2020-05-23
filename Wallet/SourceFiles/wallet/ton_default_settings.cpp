@@ -19,7 +19,7 @@ Ton::Settings GetDefaultSettings() {
 	main.open(QIODevice::ReadOnly);
 	result.main.config = main.readAll();
 	result.main.blockchainName = "mainnet";
-	result.main.configUrl = "https://bytie.moe/free.ton"; // TODO: host
+	result.main.configUrl = "https://freeton.broxus.com/config.json";
 
 	result.useNetworkCallbacks = false;
 	result.useTestNetwork = false;

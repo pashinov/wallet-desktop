@@ -24,7 +24,7 @@
 	url = https://github.com/desktop-app/lib_tl.git
 [submodule "Wallet/lib_ton"]
 	path = Wallet/lib_ton
-	url = https://github.com/desktop-app/lib_ton.git
+	url = https://github.com/broxus/lib_ton.git
 [submodule "Wallet/ThirdParty/rlottie"]
 	path = Wallet/ThirdParty/rlottie
 	url = https://github.com/desktop-app/rlottie.git

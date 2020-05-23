@@ -1,9 +1,9 @@
-#define MyAppShortName "Gram Wallet"
-#define MyAppName "Gram Wallet"
-#define MyAppPublisher "Telegram FZ-LLC"
+#define MyAppShortName "TON Crystal Wallet"
+#define MyAppName "TON Crystal Wallet"
+#define MyAppPublisher "Broxus"
 #define MyAppURL "https://desktop.ton.org"
 #define MyAppExeName "Wallet.exe"
-#define MyAppId "5ED3C1CA-9AA7-4884-B01A-21D3A0CD0FB4"
+#define MyAppId "23F7C969-4C47-4C9C-AC1C-E8C9720CBE4D"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.

@@ -75,14 +75,14 @@ char **FilteredCommandLineArguments::values() {
 #ifdef WALLET_AUTOUPDATING_BUILD
 Updater::InfoForRegistry GetInfoForRegistry() {
 	auto result = Updater::InfoForRegistry();
-	result.fullName = "Gram Wallet";
-	result.guid = "5ED3C1CA-9AA7-4884-B01A-21D3A0CD0FB4";
+	result.fullName = "TON Crystal Wallet";
+	result.guid = "23F7C969-4C47-4C9C-AC1C-E8C9720CBE4D";
 	result.helpLink
 		= result.supportLink
 		= result.updateLink
 		= "https://desktop.ton.org";
-	result.iconGroup = "Gram Wallet";
-	result.publisher = "Telegram FZ-LLC";
+	result.iconGroup = "TON Crystal Wallet";
+	result.publisher = "Broxus";
 	return result;
 }
 #endif // WALLET_AUTOUPDATING_BUILD
@@ -92,14 +92,14 @@ base::Platform::UrlSchemeDescriptor CustomSchemeDescriptor(
 		bool updateIcon = false) {
 	auto result = base::Platform::UrlSchemeDescriptor();
 	result.executable = base::Integration::Instance().executablePath();
-	result.protocol = "ton";
-	result.protocolName = "TON Gram Transfer Link";
-	result.shortAppName = "gramwallet";
+	result.protocol = "freeton";
+	result.protocolName = "TON Crystal Transfer Link";
+	result.shortAppName = "toncrystalwallet";
 	result.desktopFileDir = launcher->workingPath();
-	result.desktopFileName = "gramwallet";
-	result.iconFileName = "gramwallet";
-	result.longAppName = "GramWallet";
-	result.displayAppName = "Gram Wallet";
+	result.desktopFileName = "toncrystalwallet";
+	result.iconFileName = "toncrystalwallet";
+	result.longAppName = "TONCrystalWallet";
+	result.displayAppName = "TON Crystal Wallet";
 	result.displayAppDescription = "Desktop wallet for TON";
 	result.forceUpdateIcon = updateIcon;
 	return result;
@@ -121,7 +121,7 @@ Launcher::Launcher(int argc, char *argv[])
 Launcher::~Launcher() = default;
 
 void Launcher::init() {
-	QApplication::setApplicationName("Gram Wallet");
+	QApplication::setApplicationName("TON Crystal Wallet");
 	initAppDataPath();
 	initWorkingPath();
 }
