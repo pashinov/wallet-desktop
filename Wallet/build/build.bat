@@ -33,7 +33,7 @@ set "ReleasePath=%HomePath%\..\out\Release"
 set "DeployPath=%ReleasePath%\deploy\%AppVersionStrMajor%\%AppVersionStrFull%"
 set "SignPath=%HomePath%\..\..\DesktopPrivate\Sign.bat"
 set "BinaryName=Wallet"
-set "FinalReleasePath=Z:\Projects\backup\wallet"
+set "FinalReleasePath=%HomePath%\..\..\wallet"
 
 if not exist %FinalReleasePath% (
   echo Release path %FinalReleasePath% not found!
@@ -61,22 +61,23 @@ set "PATH=%PATH%;C:\Program Files\7-Zip"
 
 cd "%ReleasePath%"
 
-:sign1
-call "%SignPath%" "%BinaryName%.exe"
-if %errorlevel% neq 0 (
-  timeout /t 3
-  goto sign1
-)
+:: :sign1
+:: call "%SignPath%" "%BinaryName%.exe"
+:: if %errorlevel% neq 0 (
+::   timeout /t 3
+::   goto sign1
+:: )
 
 iscc /dMyAppVersion=%AppVersionStrSmall% /dMyAppVersionZero=%AppVersionStr% /dMyAppVersionFull=%AppVersionStrFull% "/dReleasePath=%ReleasePath%" "%FullScriptPath%setup.iss"
 if %errorlevel% neq 0 goto error
 if not exist "%SetupFile%" goto error
-:sign2
-call "%SignPath%" "%SetupFile%"
-if %errorlevel% neq 0 (
-  timeout /t 3
-  goto sign2
-)
+
+:: :sign2
+:: call "%SignPath%" "%SetupFile%"
+:: if %errorlevel% neq 0 (
+::   timeout /t 3
+::   goto sign2
+:: )
 
 call update_packer.exe --version %VersionForPacker% --path %BinaryName%.exe
 if %errorlevel% neq 0 goto error

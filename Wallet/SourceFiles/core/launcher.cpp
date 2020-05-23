@@ -251,7 +251,7 @@ QString Launcher::updateCheckerDisabledFlagPath() const {
 Updater::Settings Launcher::updaterSettings() const {
 	auto result = Updater::Settings();
 	result.basePath = workingPath();
-	result.url = "https://desktop-updates.ton.org/current";
+	result.url = "https://freeton.broxus.com/current";
 	result.delayConstPart = kUpdaterDelayConstPart;
 	result.delayRandPart = kUpdaterDelayRandPart;
 	return result;
