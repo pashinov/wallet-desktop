@@ -20,7 +20,7 @@ Go to ***BuildPath*** and run
 
     sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
 
-    git clone --recursive https://github.com/ton-blockchain/wallet-desktop.git
+    git clone --recursive https://github.com/broxus/wallet-desktop.git
 
     mkdir ThirdParty
     cd ThirdParty
@@ -117,7 +117,7 @@ Go to ***BuildPath*** and run
 
     LibrariesPath=`pwd`
 
-    git clone https://github.com/ton-blockchain/ton.git
+    git clone https://github.com/broxus/ton.git
     cd ton
     git checkout eecf05ca
     git submodule init
