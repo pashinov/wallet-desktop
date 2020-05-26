@@ -2,7 +2,7 @@
 #define MyAppName "TON Crystal Wallet"
 #define MyAppPublisher "Broxus"
 #define MyAppURL "https://desktop.ton.org"
-#define MyAppExeName "Wallet.exe"
+#define MyAppExeName "CrystalWallet.exe"
 #define MyAppId "23F7C969-4C47-4C9C-AC1C-E8C9720CBE4D"
 
 [Setup]
@@ -22,7 +22,7 @@ AllowNoIcons=yes
 OutputDir={#ReleasePath}
 OutputBaseFilename=wsetup.{#MyAppVersionFull}
 SetupIconFile={#SourcePath}..\Resources\art\icon256.ico
-UninstallDisplayIcon={app}\Wallet.exe
+UninstallDisplayIcon={app}\{#MyAppExeName}
 Compression=lzma
 SolidCompression=yes
 DisableStartupPrompt=yes
@@ -37,7 +37,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; OnlyBelowVersion: 0,6.1
 
 [Files]
-Source: "{#ReleasePath}\Wallet.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ReleasePath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

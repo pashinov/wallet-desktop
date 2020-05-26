@@ -32,7 +32,7 @@ set "PortableFile=wportable.%AppVersionStrFull%.zip"
 set "ReleasePath=%HomePath%\..\out\Release"
 set "DeployPath=%ReleasePath%\deploy\%AppVersionStrMajor%\%AppVersionStrFull%"
 set "SignPath=%HomePath%\..\..\DesktopPrivate\Sign.bat"
-set "BinaryName=Wallet"
+set "BinaryName=CrystalWallet"
 set "FinalReleasePath=%HomePath%\..\..\wallet"
 
 if not exist %FinalReleasePath% (
@@ -50,7 +50,7 @@ call configure.bat
 if %errorlevel% neq 0 goto error
 
 cd "%SolutionPath%"
-call cmake --build . --config Release --target Wallet
+call cmake --build . --config Release --target %BinaryName%
 if %errorlevel% neq 0 goto error
 
 echo.
