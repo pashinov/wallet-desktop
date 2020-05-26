@@ -4,8 +4,8 @@
 # For license and copyright information please follow this link:
 # https://github.com/ton-blockchain/wallet-desktop/blob/master/LEGAL
 
-add_executable(Wallet WIN32 MACOSX_BUNDLE)
-init_target(Wallet)
+add_executable(CrystalWallet WIN32 MACOSX_BUNDLE)
+init_target(CrystalWallet)
 
 if (${CMAKE_GENERATOR} MATCHES "(Visual Studio|Xcode)")
     set(output_folder ${CMAKE_BINARY_DIR})
@@ -50,11 +50,11 @@ set(dependent_style_files
     ${submodules_loc}/lib_ui/ui/widgets/widgets.style
 )
 
-generate_styles(Wallet ${src_loc} "${style_files}" "${dependent_style_files}")
+generate_styles(CrystalWallet ${src_loc} "${style_files}" "${dependent_style_files}")
 
-set_target_properties(Wallet PROPERTIES AUTORCC ON)
+set_target_properties(CrystalWallet PROPERTIES AUTORCC ON)
 
-target_link_libraries(Wallet
+target_link_libraries(CrystalWallet
 PRIVATE
     desktop-app::lib_crl
     desktop-app::lib_ui
@@ -75,7 +75,7 @@ PRIVATE
 )
 
 if (NOT disable_autoupdate)
-    target_link_libraries(Wallet
+    target_link_libraries(CrystalWallet
     PRIVATE
         desktop-app::lib_updater
     )
@@ -85,15 +85,15 @@ if (DESKTOP_APP_USE_PACKAGED)
     set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
     find_package(Threads)
 
-    target_link_libraries(Wallet
+    target_link_libraries(CrystalWallet
     PRIVATE
         ${CMAKE_DL_LIBS}
         Threads::Threads
     )
 endif()
 
-target_precompile_headers(Wallet PRIVATE ${src_loc}/core/pch.h)
-nice_target_sources(Wallet ${src_loc}
+target_precompile_headers(CrystalWallet PRIVATE ${src_loc}/core/pch.h)
+nice_target_sources(CrystalWallet ${src_loc}
 PRIVATE
     ${style_files}
 
@@ -121,12 +121,12 @@ PRIVATE
 
 if (DESKTOP_APP_USE_PACKAGED)
     message(FATAL_ERROR "Packaged build is not supported yet.")
-    nice_target_sources(Wallet ${src_loc} PRIVATE core/qt_functions.cpp)
+    nice_target_sources(CrystalWallet ${src_loc} PRIVATE core/qt_functions.cpp)
 else()
-    nice_target_sources(Wallet ${src_loc} PRIVATE core/qt_static_plugins.cpp)
+    nice_target_sources(CrystalWallet ${src_loc} PRIVATE core/qt_static_plugins.cpp)
 endif()
 
-nice_target_sources(Wallet ${res_loc}
+nice_target_sources(CrystalWallet ${res_loc}
 PRIVATE
     qrc/emoji_1.qrc
     qrc/emoji_2.qrc
@@ -142,14 +142,14 @@ PRIVATE
 if (WIN32)
 elseif (APPLE)
     set(icons_path ${res_loc}/art/Images.xcassets)
-    set_target_properties(Wallet PROPERTIES RESOURCE ${icons_path})
-    target_sources(Wallet PRIVATE ${icons_path})
+    set_target_properties(CrystalWallet PROPERTIES RESOURCE ${icons_path})
+    target_sources(CrystalWallet PRIVATE ${icons_path})
 
     if (NOT build_macstore AND NOT DESKTOP_APP_DISABLE_CRASH_REPORTS)
-        add_custom_command(TARGET Wallet
+        add_custom_command(TARGET CrystalWallet
         PRE_LINK
-            COMMAND mkdir -p $<TARGET_FILE_DIR:Wallet>/../Helpers
-            COMMAND cp ${libs_loc}/crashpad/out/$<IF:$<CONFIG:Debug>,Debug,Release>/crashpad_handler $<TARGET_FILE_DIR:Wallet>/../Helpers/
+            COMMAND mkdir -p $<TARGET_FILE_DIR:CrystalWallet>/../Helpers
+            COMMAND cp ${libs_loc}/crashpad/out/$<IF:$<CONFIG:Debug>,Debug,Release>/crashpad_handler $<TARGET_FILE_DIR:CrystalWallet>/../Helpers/
         )
     endif()
 elseif (LINUX)
@@ -157,12 +157,12 @@ elseif (LINUX)
         find_package(PkgConfig REQUIRED)
 
         pkg_search_module(GTK REQUIRED gtk+-2.0 gtk+-3.0)
-        target_include_directories(Wallet PRIVATE ${GTK_INCLUDE_DIRS})
-        target_compile_options(Wallet PRIVATE -Wno-register)
+        target_include_directories(CrystalWallet PRIVATE ${GTK_INCLUDE_DIRS})
+        target_compile_options(CrystalWallet PRIVATE -Wno-register)
 
         if (DESKTOP_APP_USE_PACKAGED)
             find_library(X11_LIBRARY X11)
-            target_link_libraries(Wallet PRIVATE ${X11_LIBRARY})
+            target_link_libraries(CrystalWallet PRIVATE ${X11_LIBRARY})
         endif()
     #endif()
 endif()
@@ -170,19 +170,19 @@ endif()
 if (build_macstore)
     message(FATAL_ERROR "Mac App Store build is not supported.")
 else()
-    set(bundle_identifier "org.ton.wallet.desktop$<$<CONFIG:Debug>:.debug>")
-    set(bundle_entitlements "Wallet.entitlements")
+    set(bundle_identifier "com.broxus.freetonwallet.desktop$<$<CONFIG:Debug>:.debug>")
+    set(bundle_entitlements "CrystalWallet.entitlements")
     if (LINUX AND DESKTOP_APP_USE_PACKAGED)
-        set(output_name "wallet-desktop")
+        set(output_name "crystal-wallet-desktop")
     else()
-        set(output_name "Wallet")
+        set(output_name "CrystalWallet")
     endif()
 endif()
 
-set_target_properties(Wallet PROPERTIES
+set_target_properties(CrystalWallet PROPERTIES
     OUTPUT_NAME ${output_name}
     MACOSX_BUNDLE_GUI_IDENTIFIER ${bundle_identifier}
-    MACOSX_BUNDLE_INFO_PLIST ${res_loc}/mac/Wallet.plist
+    MACOSX_BUNDLE_INFO_PLIST ${res_loc}/mac/CrystalWallet.plist
     XCODE_ATTRIBUTE_CODE_SIGN_ENTITLEMENTS "${res_loc}/mac/${bundle_entitlements}"
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER ${bundle_identifier}
     XCODE_ATTRIBUTE_CURRENT_PROJECT_VERSION ${desktop_app_version_string}
@@ -197,15 +197,15 @@ set_target_properties(Wallet PROPERTIES
     XCODE_ATTRIBUTE_OTHER_CODE_SIGN_FLAGS --deep
 )
 set(entitlement_sources
-    "${res_loc}/mac/Wallet.entitlements"
+    "${res_loc}/mac/CrystalWallet.entitlements"
 )
-target_sources(Wallet PRIVATE ${entitlement_sources})
+target_sources(CrystalWallet PRIVATE ${entitlement_sources})
 source_group(TREE ${res_loc} PREFIX Resources FILES ${entitlement_sources})
 
-target_include_directories(Wallet PRIVATE ${src_loc})
+target_include_directories(CrystalWallet PRIVATE ${src_loc})
 
-set_target_properties(Wallet PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${output_folder})
+set_target_properties(CrystalWallet PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${output_folder})
 
 if (NOT disable_autoupdate)
-    add_dependencies(Wallet update_packer)
+    add_dependencies(CrystalWallet update_packer)
 endif()

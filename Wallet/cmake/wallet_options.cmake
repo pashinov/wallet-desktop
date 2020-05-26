@@ -5,5 +5,5 @@
 # https://github.com/ton-blockchain/wallet-desktop/blob/master/LEGAL
 
 if (NOT disable_autoupdate)
-    target_compile_definitions(Wallet PRIVATE WALLET_AUTOUPDATING_BUILD)
+    target_compile_definitions(CrystalWallet PRIVATE WALLET_AUTOUPDATING_BUILD)
 endif()

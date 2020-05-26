@@ -60,7 +60,7 @@ elif [ "$BuildTarget" == "mac" ]; then
   UpdateFile="wupdate-mac-$AppVersion"
   ProjectPath="$HomePath/../out"
   ReleasePath="$ProjectPath/Release"
-  BinaryName="Wallet"
+  BinaryName="CrystalWallet"
 else
   Error "Invalid target!"
 fi
@@ -145,15 +145,15 @@ if [ "$BuildTarget" == "linux" ] || [ "$BuildTarget" == "linux32" ]; then
 fi
 
 if [ "$BuildTarget" == "mac" ]; then
-  BackupPath="$HomePath/../../../Projects/backup/wallet/$AppVersionStrMajor/$AppVersionStrFull/mac"
-  if [ ! -d "$HomePath/../../../Projects/backup" ]; then
+  BackupPath="../../backup/wallet/$AppVersionStrMajor/$AppVersionStrFull/mac"
+  if [ ! -d "../../backup" ]; then
     Error "Backup path not found!"
   fi
 
   ./configure.sh
 
   cd $ProjectPath
-  cmake --build . --config Release --target Wallet
+  cmake --build . --config Release --target $BinaryName
   cd $ReleasePath
 
   if [ ! -d "$ReleasePath/$BinaryName.app" ]; then
@@ -164,12 +164,12 @@ if [ "$BuildTarget" == "mac" ]; then
     Error "$BinaryName.app.dSYM not found!"
   fi
 
-  echo "Stripping the executable.."
-  strip "$ReleasePath/$BinaryName.app/Contents/MacOS/$BinaryName"
-  echo "Done!"
+#  echo "Stripping the executable.."
+#  strip "$ReleasePath/$BinaryName.app/Contents/MacOS/$BinaryName"
+#  echo "Done!"
 
   echo "Signing the application.."
-  codesign --force --deep --timestamp --options runtime --sign "Developer ID Application: John Preston" "$ReleasePath/$BinaryName.app" --entitlements "$HomePath/Resources/mac/Wallet.entitlements"
+  codesign --force --deep --timestamp --options runtime --sign "$SignID" "$ReleasePath/$BinaryName.app" --entitlements "$HomePath/Resources/mac/$BinaryName.entitlements"
   echo "Done!"
 
   AppUUID=`dwarfdump -u "$ReleasePath/$BinaryName.app/Contents/MacOS/$BinaryName" | awk -F " " '{print $2}'`
@@ -194,7 +194,7 @@ if [ "$BuildTarget" == "mac" ]; then
 
   cp -f wsetup_template.dmg wsetup.temp.dmg
   TempDiskPath=`hdiutil attach -nobrowse -noautoopenrw -readwrite wsetup.temp.dmg | awk -F "\t" 'END {print $3}'`
-  cp -R "./$BinaryName.app" "$TempDiskPath/"
+  cp -R -f "./$BinaryName.app" "$TempDiskPath/"
   bless --folder "$TempDiskPath/" --openfolder "$TempDiskPath/"
   hdiutil detach "$TempDiskPath"
   hdiutil convert wsetup.temp.dmg -format UDZO -imagekey zlib-level=9 -ov -o "$SetupFile"
@@ -202,7 +202,7 @@ if [ "$BuildTarget" == "mac" ]; then
 
   echo "Beginning notarization process."
   set +e
-  xcrun altool --notarize-app --primary-bundle-id "org.ton.wallet.desktop" --username "$AC_USERNAME" --password "@keychain:AC_PASSWORD" --file "$SetupFile" > request_uuid.txt
+  xcrun altool --notarize-app --primary-bundle-id "com.broxus.freetonwallet.desktop" --username "$AC_USERNAME" --password "@keychain:AC_PASSWORD" --file "$SetupFile" > request_uuid.txt
   set -e
   while IFS='' read -r line || [[ -n "$line" ]]; do
     Prefix=$(echo $line | cut -d' ' -f 1)
