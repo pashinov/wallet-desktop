@@ -323,7 +323,7 @@ int Launcher::exec() {
 
 	if (restart) {
 		WALLET_LOG(("Restarting with update installer."));
-		restart("Wallet", _restartingArguments);
+		restart("CrystalWallet", _restartingArguments);
 	}
 #endif // WALLET_AUTOUPDATING_BUILD
 

@@ -135,8 +135,8 @@ PRIVATE
     qrc/emoji_5.qrc
     qrc/config.qrc
     qrc/wrapper.qrc
-    win/Wallet.rc
-    win/Wallet.manifest
+    win/CrystalWallet.rc
+    win/CrystalWallet.manifest
 )
 
 if (WIN32)

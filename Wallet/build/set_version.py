@@ -99,5 +99,5 @@ rcReplaces = [
   [ r'("ProductVersion",\s+)"\d+\.\d+\.\d+\.\d+"', r'\g<1>"' + withdot + '"' ],
 ]
 
-print('Patching Wallet.rc...')
-replaceInFile(scriptPath + '/../Resources/win/Wallet.rc', rcReplaces)
+print('Patching CrystalWallet.rc...')
+replaceInFile(scriptPath + '/../Resources/win/CrystalWallet.rc', rcReplaces)

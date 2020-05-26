@@ -43,14 +43,14 @@ if [ "$BuildTarget" == "linux" ]; then
   UpdateFile="wupdate-linux-$AppVersion"
   ProjectPath="$HomePath/../out"
   ReleasePath="$ProjectPath/Release"
-  BinaryName="Wallet"
+  BinaryName="CrystalWallet"
 elif [ "$BuildTarget" == "linux32" ]; then
   echo "Building version $AppVersionStrFull for Linux 32bit.."
   SetupFile="wsetup32.$AppVersionStrFull.tar.xz"
   UpdateFile="wupdate-linux32-$AppVersion"
   ProjectPath="$HomePath/../out"
   ReleasePath="$ProjectPath/Release"
-  BinaryName="Wallet"
+  BinaryName="CrystalWallet"
 elif [ "$BuildTarget" == "mac" ]; then
   echo "Building version $AppVersionStrFull for OS X 10.8+.."
   if [ "$AC_USERNAME" == "" ]; then
@@ -80,7 +80,7 @@ if [ "$BuildTarget" == "linux" ] || [ "$BuildTarget" == "linux32" ]; then
   ./configure.sh
 
   cd $ProjectPath
-  cmake --build . --config Release --target Wallet -- -j8
+  cmake --build . --config Release --target $BinaryName -- -j8
   cd $ReleasePath
 
   echo "$BinaryName build complete!"
