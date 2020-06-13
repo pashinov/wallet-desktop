@@ -24,7 +24,7 @@ Ton::Settings GetDefaultSettings() {
 	auto test = QFile(":/config/testnet.config.json");
 	test.open(QIODevice::ReadOnly);
 	result.test.config= test.readAll();
-	result.test.blockchainName = "testnet2";
+	result.test.blockchainName = "net.ton.dev";
 	result.test.configUrl = "https://freeton.broxus.com/testnet.config.json";
 
 	result.useNetworkCallbacks = false;
