@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/config">
-    <file alias="default.json">../config-default.json</file>
+    <file alias="mainnet.config.json">../mainnet.config.json</file>
+    <file alias="testnet.config.json">../testnet.config.json</file>
   </qresource>
 </RCC>

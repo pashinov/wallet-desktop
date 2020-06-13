@@ -15,11 +15,17 @@ namespace Wallet {
 Ton::Settings GetDefaultSettings() {
 	auto result = Ton::Settings();
 
-	auto main = QFile(":/config/default.json");
+	auto main = QFile(":/config/mainnet.config.json");
 	main.open(QIODevice::ReadOnly);
 	result.main.config = main.readAll();
 	result.main.blockchainName = "mainnet";
-	result.main.configUrl = "https://freeton.broxus.com/config.json";
+	result.main.configUrl = "https://freeton.broxus.com/mainnet.config.json";
+
+	auto test = QFile(":/config/testnet.config.json");
+	test.open(QIODevice::ReadOnly);
+	result.test.config= test.readAll();
+	result.test.blockchainName = "testnet2";
+	result.test.configUrl = "https://freeton.broxus.com/testnet.config.json";
 
 	result.useNetworkCallbacks = false;
 	result.useTestNetwork = false;

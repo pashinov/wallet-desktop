@@ -14,13 +14,13 @@ include(cmake/validate_special_target.cmake)
 include(cmake/version.cmake)
 desktop_app_parse_version(Wallet/build/version)
 
-project(Wallet
+project(CrystalWallet
     LANGUAGES C CXX
     VERSION ${desktop_app_version_cmake}
     DESCRIPTION "TON Crystal Wallet"
     HOMEPAGE_URL "https://wallet.ton.org"
 )
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Wallet)
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT CrystalWallet)
 
 get_filename_component(third_party_loc "Wallet/ThirdParty" REALPATH)
 get_filename_component(submodules_loc "Wallet" REALPATH)
