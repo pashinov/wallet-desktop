@@ -86,7 +86,6 @@ replaceInFile(scriptPath + '/version', [
 print('Patching core/version.h...')
 replaceInFile(scriptPath + '/../SourceFiles/core/version.h', [
   [ r'(AppVersion\s+=\s+)\d+', r'\g<1>' + versionFull ],
-  [ r'(AppVersionStr\s+=\s+)[^;]+', r'\g<1>"' + versionStrSmall + '"' ],
 ])
 
 parts = [versionMajor, versionMinor, versionPatch, '0']

@@ -1,9 +1,10 @@
 # Build instructions for Visual Studio 2019
 
-- [Prepare folder](#prepare-folder)
-- [Install third party software](#install-third-party-software)
-- [Clone source code and prepare libraries](#clone-source-code-and-prepare-libraries)
-- [Build the project](#build-the-project)
+- [Build instructions for Visual Studio 2019](#build-instructions-for-visual-studio-2019)
+  - [Prepare folder](#prepare-folder)
+  - [Install third party software](#install-third-party-software)
+  - [Clone source code and prepare libraries](#clone-source-code-and-prepare-libraries)
+  - [Build the project](#build-the-project)
 
 ## Prepare folder
 
@@ -49,7 +50,7 @@ Open **x86 Native Tools Command Prompt for VS 2019.bat**, go to ***BuildPath*** 
 
     SET PATH=%cd%\ThirdParty\Strawberry\perl\bin;%cd%\ThirdParty\Python27;%cd%\ThirdParty\NASM;%cd%\ThirdParty\jom;%cd%\ThirdParty\cmake\bin;%cd%\ThirdParty\yasm;%PATH%
 
-    git clone --recursive https://github.com/ton-blockchain/wallet-desktop.git
+    git clone --recursive https://github.com/broxus/wallet-desktop.git
 
     mkdir Libraries
     cd Libraries
@@ -119,15 +120,14 @@ Open **x86 Native Tools Command Prompt for VS 2019.bat**, go to ***BuildPath*** 
     git apply ../../patches/qtbase_5_12_8.diff
     cd ..
 
-    configure -prefix "%LibrariesPath%\Qt-5.12.8" -debug-and-release -force-debug-info -opensource -confirm-license -static -static-runtime -I "%LibrariesPath%\openssl_1_1_1\include" -no-opengl -openssl-linked OPENSSL_LIBS_DEBUG="%LibrariesPath%\openssl_1_1_1\out32.dbg\libssl.lib %LibrariesPath%\openssl_1_1_1\out32.dbg\libcrypto.lib Ws2_32.lib Gdi32.lib Advapi32.lib Crypt32.lib User32.lib" OPENSSL_LIBS_RELEASE="%LibrariesPath%\openssl_1_1_1\out32\libssl.lib %LibrariesPath%\openssl_1_1_1\out32\libcrypto.lib Ws2_32.lib Gdi32.lib Advapi32.lib Crypt32.lib User32.lib" -mp -nomake examples -nomake tests -platform win32-msvc
+    configure -prefix "%LibrariesPath%\Qt-5.12.8" -debug-and-release -force-debug-info -opensource -confirm-license -static -static-runtime -I "%LibrariesPath%\openssl_1_1_1\include" -opengl desktop -openssl-linked OPENSSL_LIBS_DEBUG="%LibrariesPath%\openssl_1_1_1\out32.dbg\libssl.lib %LibrariesPath%\openssl_1_1_1\out32.dbg\libcrypto.lib Ws2_32.lib Gdi32.lib Advapi32.lib Crypt32.lib User32.lib" OPENSSL_LIBS_RELEASE="%LibrariesPath%\openssl_1_1_1\out32\libssl.lib %LibrariesPath%\openssl_1_1_1\out32\libcrypto.lib Ws2_32.lib Gdi32.lib Advapi32.lib Crypt32.lib User32.lib" -mp -nomake examples -nomake tests -platform win32-msvc
 
     jom -j4
     jom -j4 install
     cd ..
 
-    git clone https://github.com/ton-blockchain/ton.git
+    git clone https://github.com/broxus/ton.git
     cd ton
-    git checkout eecf05ca
     git submodule init
     git submodule update third-party/crc32c
     mkdir build-debug
