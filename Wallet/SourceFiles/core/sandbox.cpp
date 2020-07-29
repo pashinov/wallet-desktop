@@ -98,13 +98,13 @@ void Sandbox::run() {
 	}
 #endif // WALLET_AUTOUPDATING_BUILD
 
-	WALLET_LOG(("Starting crash reporter."));
-	_crashReportWriter = std::make_unique<base::CrashReportWriter>(
-		_launcher->workingPath() + "crashes/");
+	// WALLET_LOG(("Starting crash reporter."));
+	// _crashReportWriter = std::make_unique<base::CrashReportWriter>(
+	//	_launcher->workingPath() + "crashes/");
 	//if (_crashReportWriter->lastLaunchFailed()) {
 	//	// show and check for updates..
 	//}
-	_crashReportWriter->start();
+	// _crashReportWriter->start();
 
 	WALLET_LOG(("Starting style manager."));
 	style::startManager(_scale);
@@ -128,7 +128,7 @@ void Sandbox::launchApplication() {
 			WALLET_LOG(("Qutting the application."));
 			_singleInstance = nullptr;
 			_application = nullptr;
-			_crashReportWriter = nullptr;
+			//_crashReportWriter = nullptr;
 		});
 	});
 
@@ -292,9 +292,9 @@ void Sandbox::registerEnterFromEventLoop() {
 }
 
 void Sandbox::reportAssertionViolation(const QString &info) {
-	if (_crashReportWriter) {
-		_crashReportWriter->addAnnotation("Assertion", info.toStdString());
-	}
+	//if (_crashReportWriter) {
+	//    _crashReportWriter->addAnnotation("Assertion", info.toStdString());
+	//}
 }
 
 bool Sandbox::notifyOrInvoke(QObject *receiver, QEvent *e) {

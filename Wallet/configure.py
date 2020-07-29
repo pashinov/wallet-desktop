@@ -37,6 +37,8 @@ if os.path.isfile(officialTargetFile):
         for line in f:
             officialTarget = line.strip()
 
+arguments.append('-DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON')
+
 if officialTarget != '':
     arguments.append('-DDESKTOP_APP_UPDATER_PUBLIC_KEY_LOC=SourceFiles/core')
     arguments.append('-DDESKTOP_APP_UPDATER_PRIVATE_NAME=wallet')

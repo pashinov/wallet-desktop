@@ -130,7 +130,7 @@ private:
 	const not_null<Launcher*> _launcher;
 	UiIntegration uiIntegration;
 
-	std::unique_ptr<base::CrashReportWriter> _crashReportWriter;
+	//std::unique_ptr<base::CrashReportWriter> _crashReportWriter;
 	std::unique_ptr<base::SingleInstance> _singleInstance;
 
 	QByteArray _launchCommand;
