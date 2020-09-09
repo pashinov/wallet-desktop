@@ -1,3 +1,4 @@
+.idea
 /out/
 Debug/
 Release/
@@ -19,6 +20,7 @@ Release/
 /Win32/
 ipch/
 .vs/
+cmake-build-*/
 
 .DS_Store
 ._*

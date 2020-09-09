@@ -12,7 +12,7 @@
 	url = https://github.com/desktop-app/lib_rpl.git
 [submodule "Wallet/lib_base"]
 	path = Wallet/lib_base
-	url = https://github.com/desktop-app/lib_base.git
+	url = https://github.com/broxus/lib_base.git
 [submodule "Wallet/codegen"]
 	path = Wallet/codegen
 	url = https://github.com/desktop-app/codegen.git

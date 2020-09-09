@@ -65,7 +65,7 @@ PRIVATE
     desktop-app::lib_qr
     desktop-app::lib_wallet
     desktop-app::lib_base
-    desktop-app::lib_base_crash_report_writer
+    #desktop-app::lib_base_crash_report_writer
     desktop-app::external_rlottie
     desktop-app::external_qt
     desktop-app::external_qr_code_generator
