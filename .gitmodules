@@ -18,7 +18,7 @@
 	url = https://github.com/desktop-app/codegen.git
 [submodule "Wallet/lib_ui"]
 	path = Wallet/lib_ui
-	url = https://github.com/desktop-app/lib_ui.git
+	url = https://github.com/broxus/lib_ui.git
 [submodule "Wallet/lib_tl"]
 	path = Wallet/lib_tl
 	url = https://github.com/desktop-app/lib_tl.git
