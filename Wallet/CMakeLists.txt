@@ -4,7 +4,7 @@
 # For license and copyright information please follow this link:
 # https://github.com/ton-blockchain/wallet-desktop/blob/master/LEGAL
 
-add_executable(CrystalWallet WIN32 MACOSX_BUNDLE)
+add_executable(CrystalWallet  MACOSX_BUNDLE)
 init_target(CrystalWallet)
 
 if (${CMAKE_GENERATOR} MATCHES "(Visual Studio|Xcode)")
