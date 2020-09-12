@@ -2,5 +2,6 @@
   <qresource prefix="/config">
     <file alias="mainnet.config.json">../mainnet.config.json</file>
     <file alias="testnet.config.json">../testnet.config.json</file>
+    <file alias="Token.abi.json">../Token.abi.json</file>
   </qresource>
 </RCC>
