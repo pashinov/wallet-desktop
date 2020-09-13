@@ -5,6 +5,26 @@
 		{
 			"name": "constructor",
 			"inputs": [
+				{"name":"tokenIds","type":"uint256[]"},
+				{"name":"supportStatuses","type":"bool[]"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "updateTokenSupport",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"},
+				{"name":"supportStatus","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "updateSupportStatuses",
+			"inputs": [
+				{"name":"tokenIds","type":"uint256[]"},
+				{"name":"supportStatuses","type":"bool[]"}
 			],
 			"outputs": [
 			]
@@ -14,14 +34,6 @@
 			"inputs": [
 				{"name":"tokenID","type":"uint256"},
 				{"name":"account","type":"address"}
-			],
-			"outputs": [
-				{"name":"value0","type":"uint256"}
-			]
-		},
-		{
-			"name": "getSimple",
-			"inputs": [
 			],
 			"outputs": [
 				{"name":"value0","type":"uint256"}
