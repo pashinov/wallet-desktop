@@ -4,7 +4,13 @@
 # For license and copyright information please follow this link:
 # https://github.com/ton-blockchain/wallet-desktop/blob/master/LEGAL
 
-add_executable(CrystalWallet MACOSX_BUNDLE)
+if (CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(binary_flags "WIN32")
+endif()
+
+message("FLAGS:${binary_flags} ${CMAKE_BUILD_TYPE}")
+
+add_executable(CrystalWallet ${binary_flags} MACOSX_BUNDLE)
 init_target(CrystalWallet)
 
 if (${CMAKE_GENERATOR} MATCHES "(Visual Studio|Xcode)")
