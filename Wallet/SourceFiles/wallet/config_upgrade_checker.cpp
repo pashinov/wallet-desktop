@@ -14,9 +14,9 @@ namespace Wallet {
 ConfigUpgradeChecker::ConfigUpgradeChecker(not_null<Ton::Wallet*> wallet) {
 	wallet->updates(
 	) | rpl::filter([](const Ton::Update &update) {
-		return update.data.is<Ton::ConfigUpgrade>();
+		return v::is<Ton::ConfigUpgrade>(update.data);
 	}) | rpl::start_with_next([=](const Ton::Update &update) {
-		_upgrades.push_back(update.data.get<Ton::ConfigUpgrade>());
+		_upgrades.push_back(v::get<Ton::ConfigUpgrade>(update.data));
 	}, _lifetime);
 }
 
