@@ -20,14 +20,14 @@ Ton::Settings GetDefaultSettings() {
 	result.main.config = main.readAll();
 	result.main.blockchainName = "mainnet";
 	result.main.configUrl = "https://freeton.broxus.com/mainnet.config.json";
-	result.main.tokenContractAddress = "0:f6d73b401213389da16d1adc0e08c4507e55cce6280e4f52a39b2da35df3fb7b";
+	result.main.tokenContractAddress = "0:a935d6f768021436b6d838baf8ee9ece2ea7874a473bf978e2f6884f3e9e496c";
 
 	auto test = QFile(":/config/testnet.config.json");
 	test.open(QIODevice::ReadOnly);
 	result.test.config= test.readAll();
 	result.test.blockchainName = "net.ton.dev";
 	result.test.configUrl = "https://freeton.broxus.com/testnet.config.json";
-	result.test.tokenContractAddress = "0:f6d73b401213389da16d1adc0e08c4507e55cce6280e4f52a39b2da35df3fb7b";
+	result.test.tokenContractAddress = "0:a935d6f768021436b6d838baf8ee9ece2ea7874a473bf978e2f6884f3e9e496c";
 
 	result.useNetworkCallbacks = false;
 	result.useTestNetwork = false;
