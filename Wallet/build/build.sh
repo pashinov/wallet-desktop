@@ -164,9 +164,9 @@ if [ "$BuildTarget" == "mac" ]; then
     Error "$BinaryName.app.dSYM not found!"
   fi
 
-#  echo "Stripping the executable.."
-#  strip "$ReleasePath/$BinaryName.app/Contents/MacOS/$BinaryName"
-#  echo "Done!"
+  echo "Stripping the executable.."
+  strip "$ReleasePath/$BinaryName.app/Contents/MacOS/$BinaryName"
+  echo "Done!"
 
   echo "Signing the application.."
   codesign --force --deep --timestamp --options runtime --sign "$SignID" "$ReleasePath/$BinaryName.app" --entitlements "$HomePath/Resources/mac/$BinaryName.entitlements"
