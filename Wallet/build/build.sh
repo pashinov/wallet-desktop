@@ -39,14 +39,14 @@ echo ""
 HomePath="$FullScriptPath/.."
 if [ "$BuildTarget" == "linux" ]; then
   echo "Building version $AppVersionStrFull for Linux 64bit.."
-  SetupFile="wsetup.$AppVersionStrFull.tar.xz"
+  SetupFile="cwsetup.$AppVersionStrFull.tar.xz"
   UpdateFile="wupdate-linux-$AppVersion"
   ProjectPath="$HomePath/../out"
   ReleasePath="$ProjectPath/Release"
   BinaryName="CrystalWallet"
 elif [ "$BuildTarget" == "linux32" ]; then
   echo "Building version $AppVersionStrFull for Linux 32bit.."
-  SetupFile="wsetup32.$AppVersionStrFull.tar.xz"
+  SetupFile="cwsetup32.$AppVersionStrFull.tar.xz"
   UpdateFile="wupdate-linux32-$AppVersion"
   ProjectPath="$HomePath/../out"
   ReleasePath="$ProjectPath/Release"
@@ -56,7 +56,7 @@ elif [ "$BuildTarget" == "mac" ]; then
   if [ "$AC_USERNAME" == "" ]; then
     Error "AC_USERNAME not found!"
   fi
-  SetupFile="wsetup.$AppVersionStrFull.dmg"
+  SetupFile="cwsetup.$AppVersionStrFull.dmg"
   UpdateFile="wupdate-mac-$AppVersion"
   ProjectPath="$HomePath/../out"
   ReleasePath="$ProjectPath/Release"
@@ -72,8 +72,8 @@ fi
 DeployPath="$ReleasePath/deploy/$AppVersionStrMajor/$AppVersionStrFull"
 
 if [ "$BuildTarget" == "linux" ] || [ "$BuildTarget" == "linux32" ]; then
-  BackupPath="/media/psf/backup/wallet/$AppVersionStrMajor/$AppVersionStrFull/$BuildTarget"
-  if [ ! -d "/media/psf/backup" ]; then
+  BackupPath="../../backup/wallet/$AppVersionStrMajor/$AppVersionStrFull/$BuildTarget"
+  if [ ! -d "../../backup" ]; then
     Error "Backup folder not found!"
   fi
 
