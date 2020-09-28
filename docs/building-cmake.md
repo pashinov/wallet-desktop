@@ -1,4 +1,4 @@
-## Build instructions for GYP/CMake under Ubuntu 14.04
+## Build instructions for GYP/CMake under Ubuntu 20.04
 
 ### Prepare folder
 
@@ -18,7 +18,11 @@ You will need GCC 8 installed. To install them and all the required dependencies
     libxcb-render-util0-dev libxcb-util0-dev libxcb-xkb-dev libxrender-dev \
     libasound-dev libpulse-dev libxcb-sync0-dev libxcb-randr0-dev libegl1-mesa-dev \
     libx11-xcb-dev libffi-dev libncurses5-dev pkg-config texi2html bison yasm \
-    zlib1g-dev xutils-dev python-xcbgen chrpath gperf -y --force-yes && \
+    zlib1g-dev xutils-dev python3-xcbgen chrpath gperf build-essential qt5-default \
+    qtscript5-dev libssl-dev qttools5-dev qttools5-dev-tools qtmultimedia5-dev \
+    libqt5svg5-dev libqt5webkit5-dev libsdl2-dev libasound2 libxmu-dev libxi-dev \
+    freeglut3-dev libasound2-dev libjack-jackd2-dev libxrandr-dev libqt5xmlpatterns5-dev \
+    libqt5xmlpatterns5 libqt5xmlpatterns5-dev qtbase5-dev qtdeclarative5-dev -y --force-yes && \
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
     sudo apt-get update && \
     sudo apt-get install gcc-8 g++-8 -y && \
@@ -135,11 +139,9 @@ Go to ***BuildPath*** and run
     make $MAKE_THREADS_CNT dump_syms
     cd ../../..
 
-    git clone https://github.com/ton-blockchain/ton.git
+    git clone https://github.com/broxus/ton.git
     cd ton
-    git checkout eecf05ca
-    git submodule init
-    git submodule update third-party/crc32c
+    git submodule update --init --recursive
     mkdir build-debug
     cd build-debug
     cmake -DTON_USE_ROCKSDB=OFF -DTON_USE_ABSEIL=OFF -DTON_ONLY_TONLIB=ON -DOPENSSL_FOUND=1 -DOPENSSL_INCLUDE_DIR=/usr/local/desktop-app/openssl-1.1.1/include -DOPENSSL_CRYPTO_LIBRARY=/usr/local/desktop-app/openssl-1.1.1/lib/libcrypto.a -DTON_ARCH=`uname -m | sed --expression='s/_/-/g'` ..
@@ -151,6 +153,15 @@ Go to ***BuildPath*** and run
     make $MAKE_THREADS_CNT tonlib
     cd ../..
 
+### Build in CLion
+
+CMake options
+    -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON
+    -DDESKTOP_APP_USE_PACKAGED=OFF
+    -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF
+    -DDESKTOP_APP_USE_PACKAGED_GSL=OFF
+    -G Ninja
+    
 ### Building the project
 
 Go to ***BuildPath*/wallet-desktop/Wallet** and run
