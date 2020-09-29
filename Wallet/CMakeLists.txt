@@ -87,18 +87,6 @@ if (NOT disable_autoupdate)
     )
 endif()
 
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_MULTITHREADED OFF)
-set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost)
-
-if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-    target_link_libraries(CrystalWallet PRIVATE ${Boost_LIBRARIES})
-else()
-    message(FATAL_ERROR "Packaged BOOST is not found.")
-endif()
-
 if (DESKTOP_APP_USE_PACKAGED)
     set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
     find_package(Threads)
