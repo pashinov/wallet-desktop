@@ -61,23 +61,13 @@ set "PATH=%PATH%;C:\Program Files\7-Zip"
 
 cd "%ReleasePath%"
 
-:: :sign1
-:: call "%SignPath%" "%BinaryName%.exe"
-:: if %errorlevel% neq 0 (
-::   timeout /t 3
-::   goto sign1
-:: )
+signtool sign /a /t http://timestamp.comodoca.com/authenticode /fd SHA256 %BinaryName%.exe
 
 iscc /dMyAppVersion=%AppVersionStrSmall% /dMyAppVersionZero=%AppVersionStr% /dMyAppVersionFull=%AppVersionStrFull% "/dReleasePath=%ReleasePath%" "%FullScriptPath%setup.iss"
 if %errorlevel% neq 0 goto error
 if not exist "%SetupFile%" goto error
 
-:: :sign2
-:: call "%SignPath%" "%SetupFile%"
-:: if %errorlevel% neq 0 (
-::   timeout /t 3
-::   goto sign2
-:: )
+signtool sign /a /t http://timestamp.comodoca.com/authenticode /fd SHA256 %BinaryName%.exe
 
 call update_packer.exe --version %VersionForPacker% --path %BinaryName%.exe
 if %errorlevel% neq 0 goto error
