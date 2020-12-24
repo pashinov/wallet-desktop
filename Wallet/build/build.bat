@@ -67,7 +67,7 @@ iscc /dMyAppVersion=%AppVersionStrSmall% /dMyAppVersionZero=%AppVersionStr% /dMy
 if %errorlevel% neq 0 goto error
 if not exist "%SetupFile%" goto error
 
-signtool sign /a /t http://timestamp.comodoca.com/authenticode /fd SHA256 %BinaryName%.exe
+signtool sign /a /t http://timestamp.comodoca.com/authenticode /fd SHA256 %SetupFile%
 
 call update_packer.exe --version %VersionForPacker% --path %BinaryName%.exe
 if %errorlevel% neq 0 goto error
