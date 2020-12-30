@@ -15,7 +15,7 @@
 	url = https://github.com/broxus/lib_base.git
 [submodule "Wallet/codegen"]
 	path = Wallet/codegen
-	url = https://github.com/desktop-app/codegen.git
+	url = https://github.com/broxus/codegen.git
 [submodule "Wallet/lib_ui"]
 	path = Wallet/lib_ui
 	url = https://github.com/broxus/lib_ui.git
@@ -51,7 +51,7 @@
 	url = https://github.com/desktop-app/lib_qr.git
 [submodule "Wallet/lib_updater"]
 	path = Wallet/lib_updater
-	url = https://github.com/desktop-app/lib_updater.git
+	url = https://github.com/broxus/lib_updater.git
 [submodule "cmake"]
 	path = cmake
 	url = https://github.com/broxus/cmake_helpers.git
