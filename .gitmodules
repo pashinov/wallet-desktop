@@ -36,7 +36,7 @@
 	url = https://github.com/Cyan4973/xxHash.git
 [submodule "Wallet/lib_storage"]
 	path = Wallet/lib_storage
-	url = https://github.com/desktop-app/lib_storage.git
+	url = https://github.com/broxus/lib_storage.git
 [submodule "Wallet/lib_wallet"]
 	path = Wallet/lib_wallet
 	url = https://github.com/broxus/lib_wallet.git
