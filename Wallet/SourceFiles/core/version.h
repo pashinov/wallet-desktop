@@ -6,4 +6,4 @@
 //
 #pragma once
 
-inline constexpr auto AppVersion = 1003000;
+inline constexpr auto AppVersion = 1003001;
