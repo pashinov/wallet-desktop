@@ -79,6 +79,7 @@ PRIVATE
     desktop-app::external_crash_reports
     desktop-app::external_auto_updates
     desktop-app::external_openssl
+    desktop-app::external_hidapi
 )
 
 if (NOT disable_autoupdate)

@@ -17,8 +17,8 @@ You will need GCC 8 installed. To install them and all the required dependencies
     libxcb-xfixes0-dev libxcb-keysyms1-dev libxcb-icccm4-dev libatspi2.0-dev \
     libxcb-render-util0-dev libxcb-util0-dev libxcb-xkb-dev libxrender-dev \
     libasound-dev libpulse-dev libxcb-sync0-dev libxcb-randr0-dev libegl1-mesa-dev \
-    libx11-xcb-dev libffi-dev libncurses5-dev pkg-config texi2html bison yasm \
-    zlib1g-dev xutils-dev python-xcbgen chrpath gperf -y --force-yes && \
+    libx11-xcb-dev libffi-dev libncurses5-dev libusb-1.0-0-dev libhidapi-dev pkg-config \
+    texi2html bison yasm zlib1g-dev xutils-dev python-xcbgen chrpath gperf -y --force-yes && \
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
     sudo apt-get update && \
     sudo apt-get install gcc-8 g++-8 -y && \
